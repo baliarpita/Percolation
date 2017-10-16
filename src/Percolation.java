@@ -1,5 +1,4 @@
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
-import edu.princeton.cs.algs4.StdOut ;
 
 public class Percolation {
 	
@@ -33,62 +32,50 @@ public class Percolation {
 		}
 		
 		if(!opened[row][col])
-		{
-			// Site in top level of grid
-			// Connect with Virtual Top (0)
-			if(row == 1)
-			{
-				int p =mapTo1DArray(row,col);
-				wqu.union(p,virtualTop);
-				opened[row][col] = true;
-			}
-			
-			// Site in bottom level of grid
-			// Connect with Virtual Bottom (26)
-			if(row == n)
-			{
-				int p =mapTo1DArray(row,col);
-				wqu.union(p,virtualBottom);
-				opened[row][col] = true;
-			}
-			
-			// Check upper site
-			if(row > 1 && opened[row-1][col])
-			{
-				int p =mapTo1DArray(row,col);
-				int q = mapTo1DArray(row-1, col);
-				wqu.union(p,q);
-				opened[row][col] = true;
-			}
-			
-			//Check bottom site
-			if(row> n && opened[row+1][col])
-			{
-				int p =mapTo1DArray(row,col);
-				int q = mapTo1DArray(row+1, col);
-				wqu.union(p,q);
-				opened[row][col] = true;
-			}
-			
-			//Check left site
-			if(col > 1 && opened[row][col-1])
-			{
-				int p =mapTo1DArray(row,col);
-				int q = mapTo1DArray(row, col-1);
-				wqu.union(p,q);
-				opened[row][col] = true;
-			}
-			
-			//Check right site
-			if(col < n && opened[row][col+1])
-			{
-				int p =mapTo1DArray(row,col);
-				int q = mapTo1DArray(row, col+1);
-				wqu.union(p,q);
-				opened[row][col] = true;
-			}
+			opened[row][col] = true;
+		
+		// Site in top level of grid
+		// Connect with Virtual Top (0)
+		if (row == 1) {
+			int p = mapTo1DArray(row, col);
+			wqu.union(p, virtualTop);
 		}
-	} 
+
+		// Site in bottom level of grid
+		// Connect with Virtual Bottom (26)
+		if (row == n) {
+			int p = mapTo1DArray(row, col);
+			wqu.union(p, virtualBottom);
+		}
+
+		// Check upper site
+		if (row > 1 && opened[row - 1][col]) {
+			int p = mapTo1DArray(row, col);
+			int q = mapTo1DArray(row - 1, col);
+			wqu.union(p, q);
+		}
+
+		// Check bottom site
+		if (row < n && opened[row + 1][col]) {
+			int p = mapTo1DArray(row, col);
+			int q = mapTo1DArray(row + 1, col);
+			wqu.union(p, q);
+		}
+
+		// Check left site
+		if (col > 1 && opened[row][col - 1]) {
+			int p = mapTo1DArray(row, col);
+			int q = mapTo1DArray(row, col - 1);
+			wqu.union(p, q);
+		}
+
+		// Check right site
+		if (col < n && opened[row][col + 1]) {
+			int p = mapTo1DArray(row, col);
+			int q = mapTo1DArray(row, col + 1);
+			wqu.union(p, q);
+		}
+	}
 
 	private int mapTo1DArray(int row, int col) {
 		// Map to WeightedUnion data type.
@@ -139,40 +126,5 @@ public class Percolation {
 
 	public static void main(String[] args) {
 		// test client (optional)
-		Percolation test = new Percolation(5);
-		
-		// For percolating condition:
-		test.open(1, 1);
-		test.open(1, 2);
-		test.open(1, 4);
-		test.open(2, 4);
-		test.open(3, 2);
-		test.open(3, 4);
-		test.open(3, 5);
-		test.open(4, 1);
-		test.open(4, 3);
-		test.open(4, 4);
-		test.open(5, 1);
-		test.open(5, 2);
-		test.open(5, 4);
-		test.open(5, 5);
-		
-		/*For non percolating condition:
-		test.open(1, 1);
-		test.open(1, 2);
-		test.open(1, 4);
-		test.open(2, 4);
-		test.open(3, 2);
-		test.open(3, 4);
-		test.open(3, 5);
-		test.open(4, 1);
-		test.open(4, 3);
-		test.open(5, 1);
-		test.open(5, 2);
-		test.open(5, 4);
-		test.open(5, 5);*/
-		
-		StdOut.printf("test.percolates(): "+ test.percolates());
-		
 	}
 }
