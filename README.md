@@ -1,3 +1,4 @@
+
 # Percolation
 
 Percolation: Given a composite systems comprised of randomly distributed insulating and metallic materials: what fraction of the materials need to be metallic so that the composite system is an electrical conductor? Given a porous landscape with water on the surface (or oil below), under what conditions will the water be able to drain through to the bottom (or the oil to gush through to the surface)? Scientists have defined an abstract process known as percolation to model such situations. 
@@ -7,3 +8,7 @@ The model: We model a percolation system using an n-by-n grid of sites. Each sit
 The problem. In a famous scientific problem, researchers are interested in the following question: if sites are independently set to be open with probability p (and therefore blocked with probability 1 - p), what is the probability that the system percolates? When p equals 0, the system does not percolate; when p equals 1, the system percolates. The plots below show the site vacancy probability p versus the percolation probability for 20-by-20 random grid (left) and 100-by-100 random grid (right).
 
 When n is sufficiently large, there is a threshold value p* such that when p < p* a random n-by-n grid almost never percolates, and when p > p*, a random n-by-n grid almost always percolates. No mathematical solution for determining the percolation threshold p* has yet been derived. Task is to write a computer program to estimate p*. 
+
+By repeating this computation experiment T times and averaging the results, we obtain a more accurate estimate of the percolation threshold.
+
+This is a part of assignments in Algorithms 1 course of Coursera.
